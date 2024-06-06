@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        function redirectBasedOnPath() {
+            const url = new URL(window.location.href);
+            const pathname = url.pathname;
+            const routes = {
+                '/path1': 'https://www.youtube.com/watch?v=ZAS_GgjcC8s',
+                '/path2': 'https://www.twitch.tv/thereasonablecuber',
+                // Add more paths and corresponding URLs as needed
+            };
+            
+            if (routes[pathname]) {
+                window.location.href = routes[pathname];
+            } else {
+                // Default redirection or error handling
+                window.location.href = 'https://example.com/default';
+            }
+        }
+        window.onload = redirectBasedOnPath;
+    </script>
+</head>
+<body>
+    <p>If you are not redirected automatically, follow the appropriate link:</p>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=ZAS_GgjcC8s">YouTube Video</a></li>
+        <li><a href="https://www.twitch.tv/thereasonablecuber">Twitch Channel</a></li>
+    </ul>
+</body>
+</html>
