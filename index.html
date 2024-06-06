@@ -41,7 +41,14 @@
         // Display the homepage content if the pathname is '/'
         const url = new URL(window.location.href);
         if (url.pathname === '/') {
-            document.getElementById('content').innerHTML = '<h1>Welcome to the Tomato website</h1>';
+            document.getElementById('content').innerHTML = `
+                <h1>Welcome to the Tomato website</h1>
+                <p>Check out my socials:</p>
+                <ul>
+                    <li>YouTube: <a href="https://www.youtube.com/channel/UCnh_Fr3x7pIuKZaY-K_ePpQ">https://www.youtube.com/channel/UCnh_Fr3x7pIuKZaY-K_ePpQ</a></li>
+                    <li>Twitch: <a href="https://www.twitch.tv/tomarthus">https://www.twitch.tv/tomarthus</a></li>
+                </ul>
+            `;
         }
     </script>
 </body>
