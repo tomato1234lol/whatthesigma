@@ -8,34 +8,59 @@
         function redirectBasedOnPath() {
             const url = new URL(window.location.href);
             const pathname = url.pathname;
-            const routes = {
-                '/path1': 'https://www.youtube.com/watch?v=ZAS_GgjcC8s',
-                '/path2': 'https://www.twitch.tv/thereasonablecuber',
-                // Add more paths and corresponding URLs as needed
-            };
+            const routes = getRoutes();
 
             if (pathname === '/' || pathname === '') {
-                // Display homepage if no specific path is provided
                 displayHomepage(routes);
             } else if (routes[pathname]) {
-                // Redirect to the URL if the path matches
                 window.location.href = routes[pathname];
             } else {
-                // Handle invalid paths
                 document.body.innerHTML = '<p>Invalid path. Please go to the <a href="/">homepage</a>.</p>';
             }
         }
 
+        function getRoutes() {
+            const routes = JSON.parse(localStorage.getItem('routes')) || {};
+            return routes;
+        }
+
+        function saveRoute(path, url) {
+            const routes = getRoutes();
+            routes[path] = url;
+            localStorage.setItem('routes', JSON.stringify(routes));
+        }
+
         function displayHomepage(routes) {
-            let homepageContent = '<h1>Welcome to the Redirector</h1>';
-            homepageContent += '<p>Here are the available paths and where they redirect to:</p><ul>';
-            
+            let homepageContent = `
+                <h1>Welcome to the Redirector</h1>
+                <p>Here are the available paths and where they redirect to:</p>
+                <ul>`;
+
             for (const path in routes) {
                 if (routes.hasOwnProperty(path)) {
                     homepageContent += `<li><a href="${path}">${path}</a> -> <a href="${routes[path]}">${routes[path]}</a></li>`;
                 }
             }
-            homepageContent += '</ul>';
+            
+            homepageContent += `</ul>
+                <h2>Add a New Redirect</h2>
+                <form id="redirectForm">
+                    <label for="path">Path:</label>
+                    <input type="text" id="path" name="path" required>
+                    <label for="url">URL:</label>
+                    <input type="url" id="url" name="url" required>
+                    <button type="submit">Add Redirect</button>
+                </form>
+                <script>
+                    document.getElementById('redirectForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const path = document.getElementById('path').value;
+                        const url = document.getElementById('url').value;
+                        saveRoute(path, url);
+                        location.reload();
+                    });
+                </script>
+            `;
 
             document.body.innerHTML = homepageContent;
         }
