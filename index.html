@@ -9,26 +9,40 @@
             const url = new URL(window.location.href);
             const pathname = url.pathname;
             const routes = {
-                '/whatthesigma': 'https://www.youtube.com/watch?v=ZAS_GgjcC8s',
-                '/themostreasonableman': 'https://www.twitch.tv/thereasonablecuber',
+                '/path1': 'https://www.youtube.com/watch?v=ZAS_GgjcC8s',
+                '/path2': 'https://www.twitch.tv/thereasonablecuber',
                 // Add more paths and corresponding URLs as needed
             };
-            
-            if (routes[pathname]) {
+
+            if (pathname === '/' || pathname === '') {
+                // Display homepage if no specific path is provided
+                displayHomepage(routes);
+            } else if (routes[pathname]) {
+                // Redirect to the URL if the path matches
                 window.location.href = routes[pathname];
             } else {
-                // Default redirection or error handling
-                window.location.href = 'https://example.com/default';
+                // Handle invalid paths
+                document.body.innerHTML = '<p>Invalid path. Please go to the <a href="/">homepage</a>.</p>';
             }
         }
+
+        function displayHomepage(routes) {
+            let homepageContent = '<h1>Welcome to the Redirector</h1>';
+            homepageContent += '<p>Here are the available paths and where they redirect to:</p><ul>';
+            
+            for (const path in routes) {
+                if (routes.hasOwnProperty(path)) {
+                    homepageContent += `<li><a href="${path}">${path}</a> -> <a href="${routes[path]}">${routes[path]}</a></li>`;
+                }
+            }
+            homepageContent += '</ul>';
+
+            document.body.innerHTML = homepageContent;
+        }
+
         window.onload = redirectBasedOnPath;
     </script>
 </head>
 <body>
-    <p>If you are not redirected automatically, follow the appropriate link:</p>
-    <ul>
-        <li><a href="https://www.youtube.com/watch?v=ZAS_GgjcC8s">YouTube Video</a></li>
-        <li><a href="https://www.twitch.tv/thereasonablecuber">Twitch Channel</a></li>
-    </ul>
 </body>
 </html>
