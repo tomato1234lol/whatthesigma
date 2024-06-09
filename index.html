@@ -8,54 +8,157 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f0f0f0;
         }
         h1 {
             margin-top: 50px;
         }
-        .aura {
+        #aura {
             font-size: 24px;
             margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #333;
+            display: inline-block;
         }
-        .rarity {
+        #reroll {
+            margin-top: 20px;
+            padding: 10px 20px;
             font-size: 16px;
-            font-style: italic;
-            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>RNG Game</h1>
-    <p>Refresh the page to get a random aura:</p>
-    <div class="aura" id="aura"></div>
-    <div class="rarity" id="rarity"></div>
+    <h1>RNG Game - Random Aura Generator</h1>
+    <div id="aura">Click "Reroll" to get a random aura!</div>
+    <button id="reroll" onclick="getRandomAura()">Reroll</button>
 
     <script>
-        // List of Auras from the provided websites along with their rarities
-        const aurasWithRarity = [
-            // From sol-rng.fandom.com
-            { name: "Amber", rarity: "Common" },
-            { name: "Aqua", rarity: "Common" },
-            { name: "Aurora", rarity: "Common" },
-            // Add other auras from sol-rng.fandom.com with their rarities
-            { name: "Zen", rarity: "Common" },
-            // From gamerant.com
-            { name: "Candy Cane", rarity: "Common" },
-            { name: "Carnival", rarity: "Common" },
-            { name: "Celestial", rarity: "Common" },
-            // Add other auras from gamerant.com with their rarities
-            { name: "Zombie", rarity: "Common" }
-        ];
-
-        // Function to get a random aura
         function getRandomAura() {
-            const randomIndex = Math.floor(Math.random() * aurasWithRarity.length);
-            return aurasWithRarity[randomIndex];
-        }
+            // List of auras with their rarities
+            const auras = [
+                { name: "Common", rarity: 1 / 2 },
+                { name: "Uncommon", rarity: 1 / 4 },
+                { name: "Good", rarity: 1 / 5 },
+                { name: "Natural", rarity: 1 / 8 },
+                { name: "Rare", rarity: 1 / 16 },
+                { name: "Divinus", rarity: 1 / 32 },
+                { name: "Crystallized", rarity: 1 / 64 },
+                { name: "Rage", rarity: 1 / 128 },
+                { name: "Topaz", rarity: 1 / 150 },
+                { name: "Glacier", rarity: 1 / 256 },
+                { name: "Wind", rarity: 1 / 300 },
+                { name: "Ruby", rarity: 1 / 350 },
+                { name: "Forbidden", rarity: 1 / 404 },
+                { name: "Gilded", rarity: 1 / 512 },
+                { name: "Ink", rarity: 1 / 700 },
+                { name: "Jackpot", rarity: 1 / 777 },
+                { name: "Diaboli", rarity: 1 / 1004 },
+                { name: "Precious", rarity: 1 / 1024 },
+                { name: "Undefined", rarity: 1 / 1111 },
+                { name: "Glock", rarity: 1 / 1700 },
+                { name: "Magnetic", rarity: 1 / 2048 },
+                { name: "Sidereum", rarity: 1 / 4096 },
+                { name: "Bleeding", rarity: 1 / 4444 },
+                { name: "Lunar", rarity: 1 / 5000 },
+                { name: "Solar", rarity: 1 / 5000 },
+                { name: "Flushed", rarity: 1 / 6900 },
+                { name: "Hazard", rarity: 1 / 7000 },
+                { name: "Quartz", rarity: 1 / 8192 },
+                { name: "Undead", rarity: 1 / 10000 },
+                { name: "Corrosive", rarity: 1 / 12000 },
+                { name: "Comet", rarity: 1 / 12000 },
+                { name: "Rage: Heated", rarity: 1 / 12800 },
+                { name: "Ink Leak", rarity: 1 / 14000 },
+                { name: "Powered", rarity: 1 / 16000 },
+                { name: "Permafrost", rarity: 1 / 24500 },
+                { name: "Stormal", rarity: 1 / 30000 },
+                { name: "Aquatic", rarity: 1 / 40000 },
+                { name: "Flushed: Lobotomy", rarity: 1 / 69000 },
+                { name: "Hazar Rays", rarity: 1 / 70000 },
+                { name: "Nautilus", rarity: 1 / 70000 },
+                { name: "Exotic", rarity: 1 / 99999 },
+                { name: "Undead: Devil", rarity: 1 / 100000 },
+                { name: "Diaboli: Void", rarity: 1 / 100000 },
+                { name: "Jade", rarity: 1 / 125000 },
+                { name: "Bounded", rarity: 1 / 200000 },
+                { name: "Celestial", rarity: 1 / 350000 },
+                { name: "Galaxy", rarity: 1 / 500000 },
+                { name: "Lunar: Full Moon", rarity: 1 / 500000 },
+                { name: "Twilight", rarity: 1 / 600000 },
+                { name: "Kyawthuite", rarity: 1 / 850000 },
+                { name: "Arcane", rarity: 1 / 1000000 },
+                { name: "Starscourage", rarity: 1 / 1000000 },
+                { name: "Magnetic Reverse Polarity", rarity: 1 / 1024000 },
+                { name: "Astral", rarity: 1 / 1336000 },
+                { name: "Gravitational", rarity: 1 / 2000000 },
+                { name: "Virtual", rarity: 1 / 2500000 },
+                { name: "Sailor", rarity: 1 / 3000000 },
+                { name: "Poseidon", rarity: 1 / 3800000 },
+                { name: "Aquatic: Flame", rarity: 1 / 4000000 },
+                { name: "Solar Soltice", rarity: 1 / 5000000 },
+                { name: "Hades", rarity: 1 / 6666666 },
+                { name: "Hyper Volt", rarity: 1 / 7500000 },
+                { name: "Glitch", rarity: 1 / 12210000 },
+                { name: "Arcane: Legacy", rarity: 1 / 15000000 },
+                { name: "Chromatic", rarity: 1 / 20000000 },
+                { name: "Arcane: Dark", rarity: 1 / 30000000 },
+                { name: "Exotic: Apex", rarity: 1 / 49999500 },
+                { name: "Matrix", rarity: 1 / 50000000 },
+                { name: "Chromatic: Genesis", rarity: 1 / 99999999 },
+                { name: "Starscourage: Radiant", rarity: 1 / 100000000 },
+                { name: "Abyssal Hunter", rarity: 1 / 100000000 },
+                { name: "Overture", rarity: 1 / 150000000 },
+                { name: "Impeached", rarity: 1 / 200000000 },
+                { name: "Archangel", rarity: 1 / 250000000 },
+                { name: "Overture: History", rarity: 1 / 300000000 },
+                { name: "Bloodlust", rarity: 1 / 300000000 },
+                { name: "Gargantua", rarity: 1 / 430000000 },
+                { name: "Oppression", rarity: 1 / 600000000000 },
+                { name: "Eclipse", rarity: "Craft", description: "To craft, you need to unlock Solar, Lunar, and Divinus Auras." },
+                { name: "Divinus: Love", rarity: "Quest Reward", description: "Exclusively for completing Lime NPC quests during Valentine's Day 2024" },
+                { name: "Flushed: Heart Eye", rarity: "Quest Reward", description: "Exclusively for completing Lime NPC quests during Valentine's Day 2024" },
+                { name: "Celestial: Cupid", rarity: "Quest Reward", description: "Exclusively for completing Lime NPC quests during Valentine's Day 2024" },
+                { name: "Blossom", rarity: "Quest Reward", description: "Exclusively for completing Lime NPC quests during Valentine's Day 2024" },
+                { name: "Lightning", rarity: 1 / 40000, removed: true },
+                { name: "Sol", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Defined", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "The Rock", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Constraint Test", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Find the Probability of this Aura", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Layers", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Sovereign", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Abomination", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Kyawthuite : Iridescent Memory", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" },
+                { name: "Twilight: Viridescent Memory", rarity: "Unobtainable", description: "Can be used or given as a reward by administrators" }
+            ];
 
-        // Display a random aura and its rarity on page load
-        const randomAura = getRandomAura();
-        document.getElementById('aura').innerText = randomAura.name;
-        document.getElementById('rarity').innerText = "Rarity: " + randomAura.rarity;
+            let aura = "Undefined"; // Default aura
+
+            // Generate a random number between 0 and 1
+            const random = Math.random();
+
+            // Loop through auras to find the random aura
+            let cumulativeProbability = 0;
+            for (const auraData of auras) {
+                // Check if the aura is not removed
+                if (!auraData.removed) {
+                    cumulativeProbability += auraData.rarity;
+                    if (random < cumulativeProbability) {
+                        aura = auraData.name;
+                        break;
+                    }
+                }
+            }
+
+            // Update the aura display
+            document.getElementById("aura").innerText = aura;
+        }
     </script>
 </body>
 </html>
+
