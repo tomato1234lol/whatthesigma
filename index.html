@@ -3,53 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        function redirectBasedOnPath() {
-            const url = new URL(window.location.href);
-            const pathname = url.pathname;
-            const routes = {
-                '/path1': 'https://www.youtube.com/watch?v=ZAS_GgjcC8s',
-                '/path2': 'https://www.twitch.tv/thereasonablecuber',
-                // Add more paths and corresponding URLs as needed
-            };
-            
-            if (pathname === '/') {
-                // If the user is on the homepage, do nothing (no redirection)
-                return;
-            }
-
-            if (routes[pathname]) {
-                window.location.href = routes[pathname];
-            } else {
-                // Default redirection or error handling
-                window.location.href = 'https://example.com/default';
-            }
+    <title>Tomato's Personal Webpage</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            background-color: #FFD700;
+            color: #0000FF;
+            text-align: center;
         }
-        window.onload = redirectBasedOnPath;
-    </script>
+        a {
+            color: #FF0000;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            border: 5px solid #FF00FF;
+            padding: 20px;
+            background-color: #00FFFF;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .skills, .interests {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skills li, .interests li {
+            background-color: #FFA500;
+            margin: 5px 0;
+            padding: 10px;
+            border: 2px solid #000;
+        }
+    </style>
 </head>
 <body>
-    <div id="content">
-        <p>If you are not redirected automatically, follow the appropriate link:</p>
-        <ul>
-            <li><a href="https://www.youtube.com/watch?v=ZAS_GgjcC8s">YouTube Video</a></li>
-            <li><a href="https://www.twitch.tv/thereasonablecuber">Twitch Channel</a></li>
-        </ul>
+    <div class="container">
+        <h1>Welcome to Tomato's Webpage!</h1>
+        
+        <div class="section" id="about">
+            <h2>About Me</h2>
+            <p>im tomato, hi.</p>
+        </div>
+        
+        <div class="section" id="contact">
+            <h2>Contact Information</h2>
+            <p>You can find my contact on my social media links.</p>
+        </div>
+        
+        <div class="section" id="portfolio">
+            <h2>Portfolio</h2>
+            <p>Not much happening but some soon?</p>
+        </div>
+        
+        <div class="section" id="skills">
+            <h2>Skills</h2>
+            <ul class="skills">
+                <li>I'm decent at Geometry Dash</li>
+                <li>Can solve a Rubik's cube in ~40 seconds</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="social-media">
+            <h2>Social Media Links</h2>
+            <ul class="skills">
+                <li><a href="https://www.youtube.com/channel/UCnh_Fr3x7pIuKZaY-K_ePpQ">YouTube</a></li>
+                <li><a href="https://www.reddit.com/user/7011470/">Reddit</a></li>
+                <li><a href="https://x.com/70mat0">X/Twitter</a></li>
+                <li><a href="https://github.com/tomato1234lol">GitHub</a></li>
+                <li>Email: <a href="mailto:2017hondapilotelite@gmail.com">2017hondapilotelite@gmail.com</a></li>
+            </ul>
+        </div>
+        
+        <div class="section" id="interests">
+            <h2>Interests</h2>
+            <ul class="interests">
+                <li>Video Games:
+                    <ul>
+                        <li>Geometry Dash</li>
+                        <li>Roblox</li>
+                        <li>Minecraft</li>
+                        <li>Undertale</li>
+                        <li>Deltarune</li>
+                        <li>Portal 2</li>
+                        <li>Most Pokémon games</li>
+                        <li>Wii Sports</li>
+                        <li>Most Mario Kart games</li>
+                        <li>Super Smash Bros Ultimate</li>
+                        <li>Fortnite</li>
+                        <li>Slime Rancher</li>
+                    </ul>
+                </li>
+                <li>Food:
+                    <ul>
+                        <li>Orange juice</li>
+                        <li>Cereal</li>
+                        <li>Other food normal people like</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <script>
-        // Display the homepage content if the pathname is '/'
-        const url = new URL(window.location.href);
-        if (url.pathname === '/') {
-            document.getElementById('content').innerHTML = `
-                <h1>Welcome to the Tomato website</h1>
-                <p>Check out my socials:</p>
-                <ul>
-                    <li>YouTube: <a href="https://www.youtube.com/channel/UCnh_Fr3x7pIuKZaY-K_ePpQ">https://www.youtube.com/channel/UCnh_Fr3x7pIuKZaY-K_ePpQ</a></li>
-                    <li>Twitch: <a href="https://www.twitch.tv/tomarthus">https://www.twitch.tv/tomarthus</a></li>
-                </ul>
-            `;
-        }
-    </script>
 </body>
 </html>
