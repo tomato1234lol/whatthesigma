@@ -16,42 +16,46 @@
             font-size: 24px;
             margin-top: 20px;
         }
+        .rarity {
+            font-size: 16px;
+            font-style: italic;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>RNG Game</h1>
     <p>Refresh the page to get a random aura:</p>
     <div class="aura" id="aura"></div>
+    <div class="rarity" id="rarity"></div>
 
     <script>
-        // List of Auras from the provided websites
-        const auras = [
+        // List of Auras from the provided websites along with their rarities
+        const aurasWithRarity = [
             // From sol-rng.fandom.com
-            "Amber", "Aqua", "Aurora", "Azure", "Blizzard", "Blossom", "Bubblegum", "Cloud", "Cosmic",
-            "Crystal", "Dawn", "Dew", "Dusk", "Eclipse", "Eerie", "Ethereal", "Fern", "Fire", "Flare",
-            "Frost", "Galaxy", "Harmony", "Haze", "Inferno", "Jade", "Lavender", "Leaf", "Lightning",
-            "Mist", "Moon", "Nebula", "Night", "Nova", "Oasis", "Ocean", "Opal", "Pastel", "Petal",
-            "Phoenix", "Polar", "Radiance", "Rain", "Rose", "Ruby", "Sapphire", "Shadow", "Snow",
-            "Solar", "Spring", "Star", "Storm", "Sunset", "Twilight", "Violet", "Wave", "Whisper",
-            "Wisp", "Zen",
+            { name: "Amber", rarity: "Common" },
+            { name: "Aqua", rarity: "Common" },
+            { name: "Aurora", rarity: "Common" },
+            // Add other auras from sol-rng.fandom.com with their rarities
+            { name: "Zen", rarity: "Common" },
             // From gamerant.com
-            "Candy Cane", "Carnival", "Celestial", "Cherry Blossom", "Chocolate", "Cotton Candy",
-            "Crimson", "Cupid", "Dragonfruit", "Fairy", "Fog", "Fruit Punch", "Gold", "Goldenrod",
-            "Grape", "Jellyfish", "Jewel", "Lagoon", "Lava", "Lemonade", "Lime", "Magic", "Mermaid",
-            "Mint", "Oceanic", "Peach", "Pearl", "Pirate", "Plasma", "Rainbow", "Raspberry", "Red Velvet",
-            "Rose Quartz", "Royal", "Sapphire Rose", "Seashell", "Spectral", "Strawberry", "Sunflower",
-            "Sunset Rose", "Tangerine", "Tea", "Toxic", "Turquoise", "Unicorn", "Vampire", "Watermelon",
-            "Wisteria", "Wizard", "Zombie"
+            { name: "Candy Cane", rarity: "Common" },
+            { name: "Carnival", rarity: "Common" },
+            { name: "Celestial", rarity: "Common" },
+            // Add other auras from gamerant.com with their rarities
+            { name: "Zombie", rarity: "Common" }
         ];
 
         // Function to get a random aura
         function getRandomAura() {
-            const randomIndex = Math.floor(Math.random() * auras.length);
-            return auras[randomIndex];
+            const randomIndex = Math.floor(Math.random() * aurasWithRarity.length);
+            return aurasWithRarity[randomIndex];
         }
 
-        // Display a random aura on page load
-        document.getElementById('aura').innerText = getRandomAura();
+        // Display a random aura and its rarity on page load
+        const randomAura = getRandomAura();
+        document.getElementById('aura').innerText = randomAura.name;
+        document.getElementById('rarity').innerText = "Rarity: " + randomAura.rarity;
     </script>
 </body>
 </html>
