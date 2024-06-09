@@ -20,6 +20,10 @@
             border: 2px solid #333;
             display: inline-block;
         }
+        #rarity {
+            margin-top: 10px;
+            font-size: 16px;
+        }
         #reroll {
             margin-top: 20px;
             padding: 10px 20px;
@@ -35,6 +39,7 @@
 <body>
     <h1>RNG Game - Random Aura Generator</h1>
     <div id="aura">Click "Reroll" to get a random aura!</div>
+    <div id="rarity"></div>
     <button id="reroll" onclick="getRandomAura()">Reroll</button>
 
     <script>
@@ -138,11 +143,12 @@
             ];
 
             let aura = "Undefined"; // Default aura
+            let auraRarity = "Unknown"; // Default rarity
 
             // Generate a random number between 0 and 1
             const random = Math.random();
 
-            // Loop through auras to find the random aura
+            // Loop through auras to find the random aura and its rarity
             let cumulativeProbability = 0;
             for (const auraData of auras) {
                 // Check if the aura is not removed
@@ -150,6 +156,7 @@
                     cumulativeProbability += auraData.rarity;
                     if (random < cumulativeProbability) {
                         aura = auraData.name;
+                        auraRarity = auraData.rarity;
                         break;
                     }
                 }
@@ -157,8 +164,8 @@
 
             // Update the aura display
             document.getElementById("aura").innerText = aura;
+            document.getElementById("rarity").innerText = `Rarity: 1 in ${1 / auraRarity}`;
         }
     </script>
 </body>
 </html>
-
