@@ -7,26 +7,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
+            color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
             margin: 0;
             padding: 0;
             text-align: center;
         }
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            background-color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
+            color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
+            padding: <?php echo rand(10, 30); ?>px <?php echo rand(20, 50); ?>px;
         }
         h1 {
             margin: 0;
         }
         section {
-            padding: 20px;
+            padding: <?php echo rand(10, 30); ?>px <?php echo rand(20, 50); ?>px;
         }
         footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            background-color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
+            color: rgb(<?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>, <?php echo rand(0, 255); ?>);
+            padding: <?php echo rand(5, 20); ?>px <?php echo rand(10, 30); ?>px;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -42,7 +43,7 @@
         <p>Feel free to explore this website as much as you want. There's no specific content here, just randomness!</p>
     </section>
     <footer>
-        <p>© 2024 Random Website. All rights reserved.</p>
+        <p>© <?php echo rand(2000, 2100); ?> Random Website. All rights reserved.</p>
     </footer>
 </body>
 </html>
