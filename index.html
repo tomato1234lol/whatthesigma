@@ -154,10 +154,10 @@
             for (const auraData of auras) {
                 // Check if the aura is not removed
                 if (!auraData.removed) {
-                    cumulativeProbability += 1 / auraData.rarity; // Reverse rarity
+                    cumulativeProbability += auraData.rarity; // Reverse rarity
                     if (random < cumulativeProbability) {
                         aura = auraData.name;
-                        auraRarity = 1 / auraData.rarity; // Reverse rarity
+                        auraRarity = auraData.rarity; // Reverse rarity
                         break;
                     }
                 }
